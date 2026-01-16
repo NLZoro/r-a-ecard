@@ -10,12 +10,6 @@ interface TimelineEvent {
 
 const events: TimelineEvent[] = [
   {
-    icon: <Gem className="w-5 h-5" />,
-    title: "Engagement",
-    date: "Feb 13, 2026",
-    time: "11:30 AM",
-  },
-  {
     icon: <Flower2 className="w-5 h-5" />,
     title: "Haldi Ceremony",
     date: "Feb 13, 2026",
@@ -63,10 +57,11 @@ const Timeline = () => {
             </div>
 
             {/* Event card */}
-            <div 
+            <div
               className="flex-1 p-4 rounded-xl border border-accent/20"
               style={{
-                background: "linear-gradient(135deg, rgba(255, 253, 208, 0.8) 0%, rgba(255, 253, 208, 0.4) 100%)",
+                background:
+                  "linear-gradient(135deg, rgba(255, 253, 208, 0.8) 0%, rgba(255, 253, 208, 0.4) 100%)",
                 backdropFilter: "blur(8px)",
               }}
             >
@@ -78,9 +73,7 @@ const Timeline = () => {
                   <h3 className="font-display text-lg font-semibold text-primary">
                     {event.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {event.date}
-                  </p>
+                  <p className="text-sm text-muted-foreground">{event.date}</p>
                 </div>
               </div>
               <div className="ml-13 text-sm font-medium text-accent">
