@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Premium Wedding Invitation Design System */
+
+@layer base {
+  :root {
+    /* Core Wedding Palette */
+    --background: 54 100% 91%; /* Warm Cream #FFFDD0 */
+    --foreground: 0 0% 20%; /* Charcoal #333333 */
+
+    --card: 54 100% 94%;
+    --card-foreground: 0 0% 20%;
+
+    --popover: 54 100% 91%;
+    --popover-foreground: 0 0% 20%;
+
+    /* Royal Maroon - Primary */
+    --primary: 345 100% 25%; /* #800020 */
+    --primary-foreground: 54 100% 91%;
+
+    /* Antique Gold - Accent */
+    --accent: 43 72% 52%; /* #D4AF37 */
+    --accent-foreground: 0 0% 20%;
+
+    --secondary: 43 60% 85%;
+    --secondary-foreground: 345 100% 25%;
+
+    --muted: 40 30% 85%;
+    --muted-foreground: 0 0% 35%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 54 100% 91%;
+
+    --border: 43 50% 70%;
+    --input: 43 50% 80%;
+    --ring: 43 72% 52%;
+
+    --radius: 0.75rem;
+
+    /* Custom Wedding Variables */
+    --envelope: 345 100% 25%;
+    --envelope-flap: 345 90% 22%;
+    --wax-seal: 43 72% 52%;
+    --paper-texture: 54 100% 91%;
+    --gold-shimmer: linear-gradient(135deg, hsl(43, 72%, 52%) 0%, hsl(43, 80%, 65%) 50%, hsl(43, 72%, 52%) 100%);
+    --maroon-gradient: linear-gradient(180deg, hsl(345, 100%, 28%) 0%, hsl(345, 100%, 22%) 100%);
+    
+    --sidebar-background: 54 100% 91%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 345 100% 25%;
+    --sidebar-primary-foreground: 54 100% 91%;
+    --sidebar-accent: 43 72% 52%;
+    --sidebar-accent-foreground: 0 0% 20%;
+    --sidebar-border: 43 50% 70%;
+    --sidebar-ring: 43 72% 52%;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 54 100% 91%;
+    --card: 0 0% 12%;
+    --card-foreground: 54 100% 91%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 54 100% 91%;
+    --primary: 345 100% 35%;
+    --primary-foreground: 54 100% 91%;
+    --accent: 43 72% 52%;
+    --accent-foreground: 0 0% 10%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 54 100% 91%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 54 40% 70%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 54 100% 91%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 43 72% 52%;
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 54 100% 91%;
+    --sidebar-primary: 43 72% 52%;
+    --sidebar-primary-foreground: 0 0% 10%;
+    --sidebar-accent: 0 0% 18%;
+    --sidebar-accent-foreground: 54 100% 91%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 43 72% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-family: 'Lato', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  /* Paper Texture Effect */
+  .paper-texture {
+    background-color: hsl(var(--background));
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-blend-mode: soft-light;
+    background-size: 200px 200px;
+  }
+
+  /* Glassmorphism Button */
+  .glass-button {
+    @apply relative overflow-hidden rounded-full px-8 py-3 font-semibold;
+    background: linear-gradient(135deg, hsla(43, 72%, 52%, 0.3) 0%, hsla(43, 72%, 52%, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsla(43, 72%, 52%, 0.4);
+    box-shadow: 0 8px 32px hsla(43, 72%, 52%, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .glass-button:hover {
+    background: linear-gradient(135deg, hsla(43, 72%, 52%, 0.5) 0%, hsla(43, 72%, 52%, 0.2) 100%);
+    box-shadow: 0 12px 40px hsla(43, 72%, 52%, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Gold Shimmer Text */
+  .gold-text {
+    background: linear-gradient(135deg, hsl(43, 72%, 52%) 0%, hsl(43, 80%, 65%) 50%, hsl(43, 72%, 52%) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
+  }
+
+  /* Wax Seal Pulse */
+  .wax-seal-pulse {
+    animation: sealPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes sealPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  /* Envelope 3D */
+  .envelope-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .envelope-flap {
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  /* Vertical Timeline */
+  .timeline-line {
+    @apply absolute left-6 top-0 bottom-0 w-0.5;
+    background: linear-gradient(180deg, hsl(43, 72%, 52%) 0%, hsl(345, 100%, 25%) 100%);
+  }
+
+  .timeline-dot {
+    @apply w-4 h-4 rounded-full border-2 border-accent bg-background z-10;
+    box-shadow: 0 0 12px hsla(43, 72%, 52%, 0.5);
+  }
+
+  /* Music Button */
+  .music-button {
+    @apply fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center z-50;
+    background: linear-gradient(135deg, hsl(345, 100%, 25%) 0%, hsl(345, 100%, 20%) 100%);
+    box-shadow: 0 4px 20px hsla(345, 100%, 25%, 0.4);
+    border: 2px solid hsl(43, 72%, 52%);
+  }
+
+  /* Slide Indicator */
+  .slide-indicator {
+    @apply w-2 h-2 rounded-full transition-all duration-300;
+    background: hsla(43, 72%, 52%, 0.3);
+  }
+
+  .slide-indicator.active {
+    @apply w-6;
+    background: hsl(43, 72%, 52%);
+  }
+}
