@@ -23,7 +23,7 @@ const events: TimelineEvent[] = [
   },
   {
     icon: <Church className="w-5 h-5" />,
-    title: "Wedding (Fere)",
+    title: "Wedding (Phere)",
     date: "Feb 14, 2026",
     time: "12:00 PM",
   },
