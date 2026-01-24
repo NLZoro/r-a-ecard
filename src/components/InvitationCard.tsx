@@ -114,8 +114,8 @@ const SlideHero = ({ onViewDetails }: { onViewDetails: () => void }) => {
         <div 
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(180deg, rgba(128, 0, 32, 0.3) 0%, rgba(255, 253, 208, 0.9) 70%, rgba(255, 253, 208, 1) 100%)",
-          }}
+  background: "linear-gradient(to right, rgba(255, 253, 208, 0.9) 0%, rgba(255, 253, 208, 0.4) 50%, transparent 100%)"
+}}
         />
       </div>
 
