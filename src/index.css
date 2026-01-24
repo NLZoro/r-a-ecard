@@ -197,3 +197,17 @@
     background: hsl(43, 72%, 52%);
   }
 }
+/* --- FORCE BACKGROUND IMAGE --- */
+body {
+  background-image: url('/hero-bg.png') !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#root {
+  background-color: transparent !important;
+}

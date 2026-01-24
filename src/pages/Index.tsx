@@ -13,13 +13,7 @@ const Index = () => {
   });
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
+    const handleResize = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight });
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -27,43 +21,26 @@ const Index = () => {
   const handleEnvelopeOpen = () => {
     setIsEnvelopeOpen(true);
     setShowConfetti(true);
-
-    // Play paper sound effect (optional)
-    const audio = new Audio(
-      "data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdH2Nkol7dXKBjJWQg3d0gImUkYV5dYGJk5GGeHaAiJKQhXl2gIiSkIV5doCIko+FeXaAiJKPhXl2gIiSj4V5doCIko+FeXaAiJKPhXl2gIiSj4V5doCIko+FeXaAiJKPhXl2gIiSj4V5doCIko+FeXaAiJKPhXl2gIiSj4V5doA="
-    );
-    audio.volume = 0.3;
-    audio.play().catch(() => {});
-
-    // Stop confetti after 4 seconds
-    setTimeout(() => {
-      setShowConfetti(false);
-    }, 4000);
+    setTimeout(() => setShowConfetti(false), 4000);
   };
 
   return (
-    <div className="min-h-screen overflow-hidden">
-      {/* Golden Confetti */}
-      {showConfetti && (
-        <Confetti
-          width={windowSize.width}
-          height={windowSize.height}
-          recycle={false}
-          numberOfPieces={300}
-          gravity={0.15}
-          colors={["#D4AF37", "#FFD700", "#B8860B", "#DAA520", "#F0E68C", "#800020"]}
-          tweenDuration={4000}
-        />
-      )}
+    // TRANSPARENT CONTAINER: Letting the CSS Body background show through!
+    <div className="min-h-screen flex flex-col items-center justify-center relative bg-transparent">
+      
+      {/* Dark Overlay (To make text readable against the background) */}
+      <div className="fixed inset-0 bg-black/40 -z-10" />
 
-      {/* Envelope */}
-      <Envelope isOpen={isEnvelopeOpen} onOpen={handleEnvelopeOpen} />
-
-      {/* Invitation Card (shows after envelope opens) */}
-      {isEnvelopeOpen && <InvitationCard />}
-
-      {/* Music Control (always visible after opening) */}
-      {isEnvelopeOpen && <MusicControl />}
+      {/* Main Content */}
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
+        {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} numberOfPieces={300} />}
+        
+        <Envelope isOpen={isEnvelopeOpen} onOpen={handleEnvelopeOpen} />
+        
+        {isEnvelopeOpen && <InvitationCard />}
+        
+        {isEnvelopeOpen && <MusicControl />}
+      </div>
     </div>
   );
 };

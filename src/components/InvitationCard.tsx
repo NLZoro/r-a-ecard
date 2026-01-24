@@ -106,7 +106,7 @@ const SlideHero = ({ onViewDetails }: { onViewDetails: () => void }) => {
       {/* Background Photo */}
       <div className="absolute inset-0">
         <img
-          src={couplePhoto}
+          src="/hero-bg.png"
           alt="Rohil & Ashwini"
           className="w-full h-full object-cover"
         />
