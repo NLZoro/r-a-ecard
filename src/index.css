@@ -230,7 +230,8 @@ body, #root {
 }
 
 .responsive-container {
-  padding-left: max(1rem, var(--safe-left));
-  padding-right: max(1rem, var(--safe-right));
-  padding-bottom: max(1rem, var(--safe-bottom));
-} 
+  /* Increased from 1rem to 1.5rem (24px) to match your original design */
+  padding-left: max(1.5rem, var(--safe-left));
+  padding-right: max(1.5rem, var(--safe-right));
+  padding-bottom: max(1.5rem, var(--safe-bottom));
+}
