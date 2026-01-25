@@ -240,5 +240,6 @@ body, #root {
   /* Increase padding to 2rem (32px) to force text away from edges */
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-bottom: 2rem;
 }
+
+/* --- MOBILE SPECIFIC OVERRIDES --- */

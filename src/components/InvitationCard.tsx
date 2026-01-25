@@ -205,9 +205,8 @@ const SlideTimeline = () => {
       </motion.div>
 
       {/* FIX 2: Wrapped Timeline in relative box with margin to prevent edge cutting */}
-      <div className="relative ml-4">
+      
         <Timeline />
-      </div>
 
       <motion.p
         className="text-center text-sm text-muted-foreground mt-8 px-4"
@@ -273,6 +272,8 @@ const SlideVenue = () => {
         <p className="text-sm text-muted-foreground mt-2">
           We can't wait to celebrate with you! 💕
         </p>
+        <br />
+        <br />
       </motion.div>
     </div>
   );
