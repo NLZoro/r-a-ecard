@@ -168,10 +168,11 @@
   }
 
   /* Vertical Timeline */
-  .timeline-line {
-    @apply absolute left-6 top-0 bottom-0 w-0.5;
-    background: linear-gradient(180deg, hsl(43, 72%, 52%) 0%, hsl(345, 100%, 25%) 100%);
-  }
+  /* Find this block and update the 'left' value */
+.timeline-line {
+  @apply absolute left-10 top-0 bottom-0 w-0.5; /* Changed from left-6 to left-10 */
+  background: linear-gradient(180deg, hsl(43, 72%, 52%) 0%, hsl(345, 100%, 25%) 100%);
+}
 
   .timeline-dot {
     @apply w-4 h-4 rounded-full border-2 border-accent bg-background z-10;
@@ -181,16 +182,16 @@
   /* Music Button - Safe Area Aware */
   /* Music Button - iPhone Safe Version */
   .music-button {
-    @apply fixed w-14 h-14 rounded-full flex items-center justify-center z-50;
-    
-    /* This ensures it floats ABOVE the browser bar and INSIDE the curved corner */
-    bottom: max(1.5rem, calc(1rem + env(safe-area-inset-bottom))); 
-    right: max(1.5rem, calc(1rem + env(safe-area-inset-right)));
-    
-    background: linear-gradient(135deg, hsl(345, 100%, 25%) 0%, hsl(345, 100%, 20%) 100%);
-    box-shadow: 0 4px 20px hsla(345, 100%, 25%, 0.4);
-    border: 2px solid hsl(43, 72%, 52%);
-  }
+  @apply fixed w-14 h-14 rounded-full flex items-center justify-center z-50;
+  
+  /* HARD CODED SAFETY VALUES */
+  bottom: 4rem; /* 64px from bottom (Clears all browser bars) */
+  right: 2rem;  /* 32px from right (Clears all curved corners) */
+  
+  background: linear-gradient(135deg, hsl(345, 100%, 25%) 0%, hsl(345, 100%, 20%) 100%);
+  box-shadow: 0 4px 20px hsla(345, 100%, 25%, 0.4);
+  border: 2px solid hsl(43, 72%, 52%);
+}
 
   /* Slide Indicator */
   .slide-indicator {
@@ -236,8 +237,8 @@ body, #root {
 }
 
 .responsive-container {
-  /* Increased from 1rem to 1.5rem (24px) to match your original design */
-  padding-left: max(1.5rem, var(--safe-left));
-  padding-right: max(1.5rem, var(--safe-right));
-  padding-bottom: max(1.5rem, var(--safe-bottom));
+  /* Increase padding to 2rem (32px) to force text away from edges */
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
 }
