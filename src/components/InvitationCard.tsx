@@ -5,7 +5,8 @@ import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import CountdownTimer from "./CountdownTimer";
 import Timeline from "./Timeline";
 import VenueCard from "./VenueCard";
-import couplePhoto from "@/assets/couple-photo.png";
+
+// Note: We removed the import for 'couplePhoto' because we use the direct URL now
 
 const InvitationCard = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ axis: "y", dragFree: false });
@@ -42,18 +43,19 @@ const InvitationCard = () => {
       {/* Carousel Container */}
       <div className="h-full overflow-hidden" ref={emblaRef}>
         <div className="flex flex-col h-full">
+          
           {/* Slide 1: Hero */}
           <div className="flex-[0_0_100%] min-h-0 h-full w-full relative overflow-hidden">
             <SlideHero onViewDetails={() => scrollTo(1)} />
           </div>
 
           {/* Slide 2: Timeline */}
-          <div className="flex-[0_0_100%] min-h-0 h-full w-full overflow-y-auto">
+          <div className="flex-[0_0_100%] min-h-0 h-full w-full overflow-y-auto overflow-x-hidden">
             <SlideTimeline />
           </div>
 
           {/* Slide 3: Venue */}
-          <div className="flex-[0_0_100%] min-h-0 h-full w-full overflow-y-auto">
+          <div className="flex-[0_0_100%] min-h-0 h-full w-full overflow-y-auto overflow-x-hidden">
             <SlideVenue />
           </div>
         </div>
@@ -103,24 +105,24 @@ const InvitationCard = () => {
 const SlideHero = ({ onViewDetails }: { onViewDetails: () => void }) => {
   return (
     <div className="h-full flex flex-col relative">
-      {/* Background Photo */}
+      {/* Background Photo - Full Width (No Padding) */}
       <div className="absolute inset-0">
         <img
           src="/hero-bg.png"
           alt="Rohil & Ashwini"
           className="w-full h-full object-cover"
         />
-        {/* Gradient overlay */}
+        {/* Clean Gradient overlay */}
         <div 
           className="absolute inset-0"
           style={{
-  background: "linear-gradient(to right, rgba(255, 253, 208, 0.9) 0%, rgba(255, 253, 208, 0.4) 50%, transparent 100%)"
-}}
+            background: "linear-gradient(to right, rgba(255, 253, 208, 0.9) 0%, rgba(255, 253, 208, 0.4) 50%, transparent 100%)"
+          }}
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col h-full justify-end pb-8 px-6">
+      {/* Content - WITH SAFE AREA PADDING */}
+      <div className="relative z-10 flex flex-col h-full justify-end pb-8 responsive-container">
         {/* Save the Date */}
         <motion.div
           className="mb-4"
@@ -190,7 +192,8 @@ const SlideHero = ({ onViewDetails }: { onViewDetails: () => void }) => {
 // Slide 2: Timeline
 const SlideTimeline = () => {
   return (
-    <div className="min-h-full py-12 px-4">
+    // Added 'responsive-container' to prevent text cutting
+    <div className="min-h-full py-12 responsive-container">
       <motion.div
         className="text-center mb-8"
         initial={{ opacity: 0, y: 20 }}
@@ -225,18 +228,19 @@ const SlideVenue = () => {
       name: "Dhani Hotel Station Road",
       address: "Niwari Lawns, Niwari, Madhya Pradesh",
       events: "Haldi & Ring Ceremony",
-      mapsUrl: "https://maps.google.com/?q=Dhani+Hotel+Niwari",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Dhani+Hotel+Station+Road+Niwari+Madhya+Pradesh",
     },
     {
       name: "Balaji Garden",
       address: "Niwari, Madhya Pradesh",
       events: "Wedding & Reception",
-      mapsUrl: "https://maps.google.com/?q=Balaji+Garden+Niwari",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Balaji+Garden+Niwari+Madhya+Pradesh",
     },
   ];
 
   return (
-    <div className="min-h-full py-12 px-4">
+    // Added 'responsive-container' to prevent text cutting
+    <div className="min-h-full py-12 responsive-container">
       <motion.div
         className="text-center mb-8"
         initial={{ opacity: 0, y: 20 }}
@@ -255,7 +259,6 @@ const SlideVenue = () => {
         ))}
       </div>
 
-      {/* Footer message */}
       <motion.div
         className="mt-12 text-center"
         initial={{ opacity: 0 }}
