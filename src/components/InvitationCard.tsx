@@ -6,8 +6,6 @@ import CountdownTimer from "./CountdownTimer";
 import Timeline from "./Timeline";
 import VenueCard from "./VenueCard";
 
-// Note: We removed the import for 'couplePhoto' because we use the direct URL now
-
 const InvitationCard = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ axis: "y", dragFree: false });
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -105,14 +103,14 @@ const InvitationCard = () => {
 const SlideHero = ({ onViewDetails }: { onViewDetails: () => void }) => {
   return (
     <div className="h-full flex flex-col relative">
-      {/* Background Photo - Full Width (No Padding) */}
+      {/* Background Photo - Full Width */}
       <div className="absolute inset-0">
         <img
           src="/hero-bg.png"
           alt="Rohil & Ashwini"
           className="w-full h-full object-cover"
         />
-        {/* Clean Gradient overlay */}
+        {/* Gradient overlay */}
         <div 
           className="absolute inset-0"
           style={{
@@ -121,7 +119,7 @@ const SlideHero = ({ onViewDetails }: { onViewDetails: () => void }) => {
         />
       </div>
 
-      {/* Content - WITH SAFE AREA PADDING */}
+      {/* Content */}
       <div className="relative z-10 flex flex-col h-full justify-end pb-8 responsive-container">
         {/* Save the Date */}
         <motion.div
@@ -192,8 +190,8 @@ const SlideHero = ({ onViewDetails }: { onViewDetails: () => void }) => {
 // Slide 2: Timeline
 const SlideTimeline = () => {
   return (
-    // Added 'responsive-container' to prevent text cutting
-    <div className="min-h-full py-12 responsive-container">
+    // FIX 1: Increased bottom padding (pb-40) to prevent text overlap with button
+    <div className="min-h-full pt-12 pb-40 responsive-container">
       <motion.div
         className="text-center mb-8"
         initial={{ opacity: 0, y: 20 }}
@@ -206,7 +204,10 @@ const SlideTimeline = () => {
         </h2>
       </motion.div>
 
-      <Timeline />
+      {/* FIX 2: Wrapped Timeline in relative box with margin to prevent edge cutting */}
+      <div className="relative ml-4">
+        <Timeline />
+      </div>
 
       <motion.p
         className="text-center text-sm text-muted-foreground mt-8 px-4"
@@ -239,8 +240,8 @@ const SlideVenue = () => {
   ];
 
   return (
-    // Added 'responsive-container' to prevent text cutting
-    <div className="min-h-full py-12 responsive-container">
+    // FIX 3: Increased bottom padding (pb-40) here too
+    <div className="min-h-full pt-12 pb-40 responsive-container">
       <motion.div
         className="text-center mb-8"
         initial={{ opacity: 0, y: 20 }}
